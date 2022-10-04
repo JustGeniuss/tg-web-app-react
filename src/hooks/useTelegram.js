@@ -16,6 +16,6 @@ const onToggleButton = (e) => {
     onClose,
     onToggleButton,
     tg,
-    user: tg.initDataUsafe?.user,
+    user: tg.initDataUnsafe?.user,
   };
 }
