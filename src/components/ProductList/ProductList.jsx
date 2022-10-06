@@ -13,8 +13,10 @@ const products = [
     {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
 ]
 
-const getTotalPrice = (items) => {
-    return items.reduce((acc, item) => acc += item.price, 0);
+const getTotalPrice = (items = []) => {
+    return items.reduce((acc, item) => {
+        return acc += item.price
+    }, 0)
 }
 
 
@@ -27,22 +29,21 @@ const ProductList = () => {
         let newItems = [];
 
         if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== product.id)
+            newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
         }
 
-        setAddedItems(newItems);
-        
+        setAddedItems(newItems)
 
         if(newItems.length === 0) {
-           tg.MainButton.hide() 
-         } else {
+            tg.MainButton.hide();
+        } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(newItems)}`
             })
-         }
+        }
 
     };
     
